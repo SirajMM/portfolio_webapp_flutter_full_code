@@ -4,17 +4,17 @@ import 'package:mysite/app/widgets/color_chage_btn.dart';
 import 'package:mysite/changes/img.dart';
 import 'package:mysite/changes/links.dart';
 import 'package:mysite/changes/strings.dart';
-import 'package:mysite/core/animations/entrance_fader.dart';
-import 'package:mysite/core/animations/zoom_animation.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/res/responsive_size.dart';
 import 'package:sizer/sizer.dart';
 import 'package:universal_html/html.dart' as html;
 
+import '../../../core/animations/entrance_fader.dart';
+import '../../../core/animations/zoom_animation.dart';
 import 'widgets/animation_text.dart';
 
 class HomeMobile extends StatelessWidget {
-  const HomeMobile({Key? key}) : super(key: key);
+  const HomeMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +43,10 @@ class HomeMobile extends StatelessWidget {
             ),
           ),
           Space.y(1.w)!,
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                "A ",
-                style: TextStyle(
-                  fontSize: isFontSize(context, 18),
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              AnimatedTextKit(
-                animatedTexts: mobileList,
-                repeatForever: true,
-                isRepeatingAnimation: true,
-              ),
-            ],
+          AnimatedTextKit(
+            animatedTexts: mobileList,
+            repeatForever: true,
+            isRepeatingAnimation: true,
           ),
 
           Space.y(2.w)!,

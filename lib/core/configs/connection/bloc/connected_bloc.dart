@@ -12,20 +12,23 @@ part 'connected_state.dart';
 class ConnectedBloc extends Bloc<ConnectedEvent, ConnectedState> {
   StreamSubscription? subscription;
   ConnectedBloc() : super(ConnectedInitialState()) {
+    on<InitEvent>(_onInitEvent);
     on<ConnectedEvent>((event, emit) => emit(ConnectedSucessState()));
     on<OnNotConnectedEvent>((event, emit) => emit(ConnectedFailureState()));
-
+  }
+  void _onInitEvent(InitEvent event, Emitter<ConnectedState> emit) {
     subscription = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      if (result == ConnectivityResult.mobile ||
-          result == ConnectivityResult.wifi) {
+        .listen((List<ConnectivityResult> results) {
+      if (results.contains(ConnectivityResult.mobile) ||
+          results.contains(ConnectivityResult.wifi)) {
         add(OnConnectedEvent());
       } else {
         add(OnNotConnectedEvent());
       }
     });
   }
+
   @override
   Future<void> close() {
     subscription?.cancel();

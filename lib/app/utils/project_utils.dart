@@ -17,33 +17,41 @@ List<ProjectUtils> projectUtils = [
   ProjectUtils(
     banners: 'assets/imgs/02.png',
     icons: 'assets/imgs/flutter.png',
-    titles: 'Awesome Social Media App',
+    titles: 'Awesome Music player',
     description:
-        'This is a just Fully functional Social media App by using flutter, source code is also available, check below.',
-    links: '',
+        'This is a just Fully functional music player App by using flutter, source code is also available, check below.',
+    links: 'https://github.com/SirajMM/MusicPlayer',
   ),
   ProjectUtils(
-    banners: 'assets/imgs/1.png',
+    banners: 'assets/imgs/1.jpg',
     icons: 'assets/imgs/flutter.png',
-    titles: 'Awesome CRM UI',
+    titles: 'Awesome E-commerce application',
     description:
-        'This is a just CRM UI Design using Figma, file is also available, check below.',
-    links: '',
+        'This is a E-commerce application, source code is also available, check below.',
+    links: 'https://github.com/SirajMM/Quibix-ecommerce-app',
   ),
   ProjectUtils(
     banners: 'assets/imgs/03.png',
     icons: 'assets/imgs/flutter.png',
-    titles: 'Exercise App',
+    titles: 'Netflix clone App',
     description:
-        'This is a just Fully function Exercise App by using flutter, source code is also available, check below.',
-    links: '',
+        'This is a just Netflix clone App using flutter, source code is also available, check below.',
+    links: 'https://github.com/SirajMM/Netflix_clone',
   ),
   ProjectUtils(
     banners: 'assets/imgs/04.png',
     icons: 'assets/imgs/flutter.png',
-    titles: 'Awesome Plant App UI',
+    titles: 'Awesome Weather App',
     description:
-        'This is a just Plant App UI by using flutter, source code is also available, check below.',
-    links: '',
+        'This is a fully functional weather App, source code is also available, check below.',
+    links: 'https://github.com/SirajMM/weather_app',
+  ),
+  ProjectUtils(
+    banners: 'assets/imgs/05.png',
+    icons: 'assets/imgs/flutter.png',
+    titles: 'Awesome Student management App',
+    description:
+        'This is a fully Student management App, source code is also available, check below.',
+    links: 'https://github.com/SirajMM/Student-Managment-App',
   ),
 ];

@@ -1,11 +1,8 @@
 String hellotag = '''Hi there, Welcome to My Space  ''';
 
 String yourname = "I'm Muhammad Siraj M M,";
-// String hometitle2 = "A Mobile Application\nDeveloper";
 
-String animationtxt1 = " Flutter Mobile Application Developer";
-
-
+String animationtxt1 = "A Flutter Mobile Application Developer";
 
 String contactHeadding = "Let’s try my service now!";
 String contactSubHeadding =
@@ -15,13 +12,12 @@ String miniDescription =
     "Freelancer providing services for programming and design content needs. Join me down below and let's get started!";
 
 String servicesSubHeading =
-    "Since the beginning of my journey as a freelance designer and developer, I've worked in startups and collaborated with talented people to create digital products for both business and consumer use. I offer a wide range of services, including brand design, programming and teaching.";
+    "Since the beginning of my journey as a freelance designer and developer, I've worked in many projects to improve my skills and knowledge. I offer a wide range of services, including  designing and  development .";
 //
 
 String protfolioSubHeading =
-    "Since the beginning of my journey as a designer and developer, I have created digital products for business and consumer use. This is a little bit.";
-const String aboutMeHeadline =
-    'I\'m Muhammad Siraj, a Mobile App developer.';
+    "Since the beginning of my journey as a designer and developer, I have created digital products as my personal projects. This is a little bit.";
+const String aboutMeHeadline = 'I\'m Muhammad Siraj, a Mobile App developer.';
 
 const String aboutMeDetail =
-    'I have been developing mobile apps for over 1 years now. I have worked in teams for various startups and helped them in launching their prototypes and got valuable learning experience. Been a CEO/Co-Founder of Onyxsio, Sri Lanka. Currently working as an Associate Software Engineer at Onyxsio.';
+    "I bring over one year of experience in Flutter app development, with a focus on hands-on projects that demonstrate my expertise. Currently, I'm excelling in my role as an flutter developer at Brototype, where I continue to expand my knowledge and proficiency in the Flutter framework.";

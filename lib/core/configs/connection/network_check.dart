@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
 import 'package:mysite/app/sections/main/main_section.dart';
 import 'bloc/connected_bloc.dart';
 
-class NChecking extends StatelessWidget {
-  const NChecking({Key? key}) : super(key: key);
+class NChecking extends StatefulWidget {
+  const NChecking({super.key});
+
+  @override
+  State<NChecking> createState() => _NCheckingState();
+}
+
+class _NCheckingState extends State<NChecking> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ConnectedBloc>().add(InitEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +26,7 @@ class NChecking extends StatelessWidget {
         if (state is ConnectedSucessState) {
           return const MainPage();
         } else {
-          return const MainPage();
+          return const NoConnectionErorr();
         }
       },
     );
@@ -22,7 +34,7 @@ class NChecking extends StatelessWidget {
 }
 
 class NoConnectionErorr extends StatelessWidget {
-  const NoConnectionErorr({Key? key}) : super(key: key);
+  const NoConnectionErorr({super.key});
 
   @override
   Widget build(BuildContext context) {

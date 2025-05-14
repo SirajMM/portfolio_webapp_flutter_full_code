@@ -26,7 +26,7 @@ part 'widgets/_mobile_drawer.dart';
 part 'widgets/_body.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +100,19 @@ class MainPage extends StatelessWidget {
                   child: Image.asset(
                     'assets/imgs/5424482.JPG',
                     opacity: const AlwaysStoppedAnimation<double>(0.2),
+                    width: width,
+                    height: height,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
+                  ),
+                ),
+              if (!state.isDarkThemeOn)
+                Align(
+                  alignment: Alignment.center,
+                  // BG01.png
+                  child: Image.asset(
+                    'assets/imgs/BG01.png',
+                    opacity: const AlwaysStoppedAnimation<double>(0.1),
                     width: width,
                     height: height,
                     fit: BoxFit.cover,
