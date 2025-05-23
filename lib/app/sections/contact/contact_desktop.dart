@@ -88,7 +88,8 @@ class ContactDesktop extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(color: Colors.white.withOpacity(0.2), height: 1),
+                Container(
+                    color: Colors.white.withValues(alpha: 0.2), height: 1),
                 Space.y(2.w)!,
                 Wrap(
                     alignment: WrapAlignment.center,

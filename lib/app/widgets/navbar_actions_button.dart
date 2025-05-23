@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mysite/core/animations/entrance_fader.dart';
 import 'package:mysite/core/color/colors.dart';
 import 'package:mysite/core/configs/configs.dart';
-import 'package:mysite/core/providers/scroll_provider.dart';
-import 'package:provider/provider.dart';
+
+import '../../core/util/constants.dart';
 
 class NavBarActionButton extends StatefulWidget {
   final String label;
@@ -22,8 +22,6 @@ class _NavBarActionButtonState extends State<NavBarActionButton> {
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
-    final scrollProvider = Provider.of<ScrollProvider>(context);
-    // theme
     var theme = Theme.of(context);
     return EntranceFader(
       offset: const Offset(0, -10),
@@ -40,7 +38,7 @@ class _NavBarActionButtonState extends State<NavBarActionButton> {
             setState(() => isHover = value);
           },
           onTap: () {
-            scrollProvider.jumpTo(widget.index);
+            jumpTo(widget.index);
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

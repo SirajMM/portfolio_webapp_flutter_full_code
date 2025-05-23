@@ -9,7 +9,7 @@ import 'package:sizer/sizer.dart';
 class ProjectCard extends StatefulWidget {
   final ProjectUtils project;
 
-  const ProjectCard({Key? key, required this.project}) : super(key: key);
+  const ProjectCard({super.key, required this.project});
   @override
   ProjectCardState createState() => ProjectCardState();
 }
@@ -19,7 +19,6 @@ class ProjectCardState extends State<ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
-   
     double height = MediaQuery.of(context).size.height;
     var theme = Theme.of(context);
     return InkWell(

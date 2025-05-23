@@ -1,13 +1,13 @@
 part of '../main_section.dart';
 
-class _NavbarDesktop extends StatefulWidget {
-  const _NavbarDesktop({Key? key}) : super(key: key);
+class NavbarDesktop extends StatefulWidget {
+  const NavbarDesktop({super.key});
 
   @override
-  State<_NavbarDesktop> createState() => _NavbarDesktopState();
+  State<NavbarDesktop> createState() => NavbarDesktopState();
 }
 
-class _NavbarDesktopState extends State<_NavbarDesktop> {
+class NavbarDesktopState extends State<NavbarDesktop> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -46,12 +46,11 @@ class _NavbarDesktopState extends State<_NavbarDesktop> {
   }
 }
 
-class _NavBarTablet extends StatelessWidget {
-  const _NavBarTablet({Key? key}) : super(key: key);
+class NavBarTablet extends StatelessWidget {
+  const NavBarTablet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final drawerProvider = Provider.of<DrawerProvider>(context);
     var theme = Theme.of(context);
     return Container(
       color: theme.navBarColor,
@@ -62,7 +61,7 @@ class _NavBarTablet extends StatelessWidget {
           IconButton(
             highlightColor: Colors.white54,
             onPressed: () {
-              drawerProvider.key.currentState!.openDrawer();
+              Scaffold.of(context).openDrawer();
             },
             icon: const Icon(Icons.menu),
           ),

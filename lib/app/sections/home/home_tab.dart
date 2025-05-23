@@ -13,11 +13,11 @@ import 'package:sizer/sizer.dart';
 import 'package:universal_html/html.dart' as html;
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({Key? key}) : super(key: key);
+  const HomeTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
+    ThemeData theme = Theme.of(context);
     return SizedBox(
       height: 60.h,
       child: Stack(
@@ -90,11 +90,11 @@ class HomeTab extends StatelessWidget {
                     style: TextStyle(
                         fontSize: isFontSize(context, 16),
                         fontWeight: FontWeight.w100,
-                        color: theme.textColor.withOpacity(0.6)),
+                        color: theme.textColor.withValues(alpha: 0.6)),
                   ),
                 ),
                 Space.y(2.w)!,
-                ColorChageButton(
+                ColorChangeButton(
                   text: 'download cv',
                   onTap: () {
                     html.window.open(resume, "pdf");

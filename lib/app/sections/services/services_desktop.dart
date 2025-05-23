@@ -1,7 +1,7 @@
 part of 'services.dart';
 
 class ServiceDesktop extends StatefulWidget {
-  const ServiceDesktop({Key? key}) : super(key: key);
+  const ServiceDesktop({super.key});
 
   @override
   ServiceDesktopState createState() => ServiceDesktopState();
@@ -31,7 +31,7 @@ class ServiceDesktopState extends State<ServiceDesktop> {
                 .asMap()
                 .entries
                 .map(
-                  (e) => _ServiceCard(service: e.value),
+                  (e) => ServiceCard(service: e.value),
                 )
                 .toList(),
           )

@@ -56,20 +56,10 @@ class HomeDesktop extends StatelessWidget {
                         fontSize: 50,
                         fontWeight: FontWeight.w600,
                       )),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Text("A ",
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w400,
-                          )),
-                      AnimatedTextKit(
-                        isRepeatingAnimation: true,
-                        repeatForever: true,
-                        animatedTexts: desktopList,
-                      ),
-                    ],
+                  AnimatedTextKit(
+                    isRepeatingAnimation: true,
+                    repeatForever: true,
+                    animatedTexts: desktopList,
                   ),
                   Space.y(1.5.w)!,
                   Padding(
@@ -78,11 +68,11 @@ class HomeDesktop extends StatelessWidget {
                         style: TextStyle(
                           fontSize: isFontSize(context, 20),
                           fontWeight: FontWeight.w400,
-                          color: theme.textColor.withOpacity(0.6),
+                          color: theme.textColor.withValues(alpha: 0.6),
                         )),
                   ),
                   Space.y(3.w)!,
-                  ColorChageButton(
+                  ColorChangeButton(
                     text: 'download cv',
                     onTap: () {
                       html.window.open(resume, "pdf");

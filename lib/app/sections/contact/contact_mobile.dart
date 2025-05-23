@@ -58,7 +58,7 @@ class ContactMobileTab extends StatelessWidget {
                     ))
                 .toList()),
         Space.y(5.w)!,
-        Container(color: Colors.white.withOpacity(0.2), height: 1),
+        Container(color: Colors.white.withValues(alpha: 0.2), height: 1),
       ],
     );
   }

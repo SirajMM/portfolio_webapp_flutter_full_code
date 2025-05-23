@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mysite/core/animations/entrance_fader.dart';
 import 'package:mysite/core/color/colors.dart';
-import 'package:mysite/core/providers/scroll_provider.dart';
-import 'package:provider/provider.dart';
+
 import 'package:sizer/sizer.dart';
 
+import '../../core/util/constants.dart';
+
 class ArrowOnTop extends StatefulWidget {
-  const ArrowOnTop({Key? key}) : super(key: key);
+  const ArrowOnTop({super.key});
 
   @override
   ArrowOnTopState createState() => ArrowOnTopState();
@@ -16,8 +17,6 @@ class ArrowOnTopState extends State<ArrowOnTop> {
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
-    final scrollProvider = Provider.of<ScrollProvider>(context);
-
     return Positioned(
       bottom: 100,
       right: -7,
@@ -31,7 +30,7 @@ class ArrowOnTopState extends State<ArrowOnTop> {
             children: [
               InkWell(
                 borderRadius: BorderRadius.circular(8.0),
-                onTap: () => scrollProvider.jumpTo(0),
+                onTap: () => jumpTo(0),
                 onHover: (isHovering) {
                   if (isHovering) {
                     setState(() => isHover = true);

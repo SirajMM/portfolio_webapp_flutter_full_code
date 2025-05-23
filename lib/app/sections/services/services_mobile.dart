@@ -3,7 +3,7 @@
 part of 'services.dart';
 
 class ServiceMobile extends StatelessWidget {
-  const ServiceMobile({Key? key}) : super(key: key);
+  const ServiceMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ServiceMobile extends StatelessWidget {
           itemCount: servicesUtils.length,
           itemBuilder: (BuildContext context, int itemIndex, int i) => Padding(
             padding: EdgeInsets.symmetric(vertical: 0.5.w),
-            child: _ServiceCard(service: servicesUtils[i]),
+            child: ServiceCard(service: servicesUtils[i]),
           ),
           options: CarouselOptions(
             viewportFraction: 0.6,

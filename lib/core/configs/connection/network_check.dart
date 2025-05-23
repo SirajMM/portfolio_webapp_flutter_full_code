@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
+
 import 'package:mysite/app/sections/main/main_section.dart';
 import 'bloc/connected_bloc.dart';
 
@@ -20,8 +20,7 @@ class _NCheckingState extends State<NChecking> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ConnectedBloc, ConnectedState>(
-      listener: (context, state) {},
+    return BlocBuilder<ConnectedBloc, ConnectedState>(
       builder: (context, state) {
         if (state is ConnectedSucessState) {
           return const MainPage();
@@ -50,4 +49,3 @@ class NoConnectionErorr extends StatelessWidget {
     );
   }
 }
-// TODO

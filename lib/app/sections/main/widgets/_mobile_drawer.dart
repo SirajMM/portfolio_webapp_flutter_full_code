@@ -1,13 +1,11 @@
 part of '../main_section.dart';
 
-class _MobileDrawer extends StatelessWidget {
-  const _MobileDrawer({super.key});
+class MobileDrawer extends StatelessWidget {
+  const MobileDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final scrollProvider = Provider.of<ScrollProvider>(context);
-    // theme
-    var theme = Theme.of(context);
+    ThemeData theme = Theme.of(context);
     return Drawer(
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
@@ -45,8 +43,7 @@ class _MobileDrawer extends StatelessWidget {
                           child: MaterialButton(
                             hoverColor: theme.primaryColor.withAlpha(70),
                             onPressed: () {
-                              // scrollProvider.scrollMobile(e.key);
-                              scrollProvider.jumpTo(e.key);
+                              jumpTo(e.key);
                               Navigator.pop(context);
                             },
                             child: ListTile(
@@ -63,7 +60,7 @@ class _MobileDrawer extends StatelessWidget {
                         ),
                       ),
                   Space.y(5.w)!,
-                  ColorChageButton(
+                  ColorChangeButton(
                     text: 'RESUME',
                     onTap: () {
                       openURL(resume);
