@@ -19,7 +19,7 @@ class PortfolioDesktop extends StatefulWidget {
 class _PortfolioDesktopState extends State<PortfolioDesktop> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.sizeOf(context);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: size.width / 8),
       child: Column(

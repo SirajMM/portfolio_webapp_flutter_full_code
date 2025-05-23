@@ -7,8 +7,8 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
     return Container(
       margin: EdgeInsets.fromLTRB(0, height * 0.05, 0, 0),
       height: height * 0.07,

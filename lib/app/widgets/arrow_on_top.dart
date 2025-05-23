@@ -24,7 +24,7 @@ class ArrowOnTopState extends State<ArrowOnTop> {
         offset: const Offset(0, 20),
         child: Padding(
           padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.025),
+              EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.025),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

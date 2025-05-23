@@ -10,7 +10,7 @@ class NavbarDesktop extends StatefulWidget {
 class NavbarDesktopState extends State<NavbarDesktop> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.sizeOf(context);
     // theme
     var theme = Theme.of(context);
     return BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {

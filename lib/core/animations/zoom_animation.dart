@@ -56,7 +56,7 @@ class _ZoomAnimationsState extends State<ZoomAnimations>
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.sizeOf(context);
     var theme = Theme.of(context);
 
     return SizedBox(

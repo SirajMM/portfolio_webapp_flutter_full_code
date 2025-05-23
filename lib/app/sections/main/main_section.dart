@@ -31,8 +31,8 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     App.init(context);
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: const PreferredSize(

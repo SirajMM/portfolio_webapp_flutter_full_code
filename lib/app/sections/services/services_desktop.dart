@@ -10,8 +10,8 @@ class ServiceDesktop extends StatefulWidget {
 class ServiceDesktopState extends State<ServiceDesktop> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: width / 8)
