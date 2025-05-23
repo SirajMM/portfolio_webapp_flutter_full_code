@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -34,25 +34,21 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
+   var serviceWorkerVersion = '{{flutter_service_worker_version}}';
   </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+  <link rel="stylesheet" href="loading.css" />
+  <script defer src="loading.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
 </head>
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
-      });
-    });
-  </script>
+<div id="landing-page">
+  <div id="lottie-animation" style="width: 300px; height: 300px;"></div>
+  <h1 class="fade-in">Welcome To My Personal Website</h1>
+  <p class="fade-in delay">Loading Please Wait...</p>
+
+</div>
+
+<script src="main.dart.js" type="application/javascript"></script>
+
 </body>
 </html>
