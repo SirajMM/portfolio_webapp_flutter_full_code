@@ -2,12 +2,11 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:mysite/app/widgets/color_chage_btn.dart';
 import 'package:mysite/changes/img.dart';
-import 'package:mysite/changes/links.dart';
 import 'package:mysite/changes/strings.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/res/responsive_size.dart';
 import 'package:sizer/sizer.dart';
-import 'package:universal_html/html.dart' as html;
+// import 'package:univrsal_html/html.dart' as html;
 
 import '../../../core/animations/entrance_fader.dart';
 import '../../../core/animations/zoom_animation.dart';
@@ -56,7 +55,7 @@ class HomeMobile extends StatelessWidget {
               ColorChangeButton(
                 text: 'download cv',
                 onTap: () {
-                  html.window.open(resume, "pdf");
+                  // html.window.open(resume, "pdf");
                 },
               ),
               const EntranceFader(

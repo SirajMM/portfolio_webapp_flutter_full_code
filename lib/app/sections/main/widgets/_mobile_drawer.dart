@@ -20,16 +20,13 @@ class MobileDrawer extends StatelessWidget {
                   const Divider(),
                   ListTile(
                     leading: Icon(
-                      state.isDarkThemeOn
-                          ? Icons.dark_mode_outlined
-                          : Icons.light_mode,
+                      state.isDarkThemeOn ? Icons.dark_mode_outlined : Icons.light_mode,
                       // color: theme.textColor,
                     ),
-                    title:
-                        Text(state.isDarkThemeOn ? "Light Mode" : "Dark Mode"),
+                    title: Text(state.isDarkThemeOn ? "Light Mode" : "Dark Mode"),
                     trailing: Switch(
                       value: state.isDarkThemeOn,
-                      activeColor: theme.primaryColor,
+                      activeThumbColor: theme.primaryColor,
                       inactiveTrackColor: Colors.grey,
                       onChanged: (newValue) {
                         context.read<ThemeCubit>().updateTheme(newValue);

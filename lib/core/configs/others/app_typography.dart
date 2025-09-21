@@ -24,7 +24,7 @@ class AppText {
   // static TextStyle? l2;
   // static TextStyle? l2b;
 
-  static init() {
+  static void init() {
     // const b = FontWeight.bold;
     const baseStyle = TextStyle(fontFamily: 'Poppins');
 
