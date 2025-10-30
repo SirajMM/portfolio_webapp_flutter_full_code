@@ -1,31 +1,39 @@
-name: Flutter CI/CD
+name: Flutter CI/CD & Deploy
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "main" ]
-
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout Flutter project
       - uses: actions/checkout@v3
 
+      # 2️⃣ Setup Flutter SDK
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.35.6'
           channel: 'stable'
           cache: true
-          
-      - name: Install dependencies
-        run: dart pub get
 
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 4️⃣ Build Flutter web
       - name: Build web
         run: flutter build web --release
 
-      - name: Build APK
-        run: flutter build appbundle --release
+      # 5️⃣ Deploy only the build/web folder to sirajmm.github.io
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          external_repository: sirajmm/sirajmm.github.io
+          publish_branch: master
+          publish_dir: build/web
+          force_orphan: true
