@@ -26,7 +26,7 @@ class ServiceMobile extends StatelessWidget {
           ),
           options: CarouselOptions(
             viewportFraction: 0.6,
-            height: 300,
+            height: 280,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 5),
             enlargeCenterPage: true,

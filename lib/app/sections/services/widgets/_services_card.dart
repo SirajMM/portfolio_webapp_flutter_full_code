@@ -6,100 +6,96 @@ class ServiceCard extends StatefulWidget {
   const ServiceCard({super.key, required this.service});
 
   @override
-  ServiceCardState createState() => ServiceCardState();
+  State<ServiceCard> createState() => _ServiceCardState();
 }
 
-class ServiceCardState extends State<ServiceCard> {
+class _ServiceCardState extends State<ServiceCard> {
   bool isHover = false;
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
+    final theme = Theme.of(context);
+    final service = widget.service;
+    final isDesktop = Responsive.isDesktop(context);
+    final isTablet = Responsive.isTablet(context);
+    final isMobile = Responsive.isMobile(context);
+
+    final baseTextColor = isHover ? whiteColor : theme.textColor;
+    final descTextColor = isHover ? whiteColor.withValues(alpha: 0.8) : theme.textColor;
+
     return InkWell(
       hoverColor: Colors.transparent,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () {},
-      onHover: (isHovering) {
-        if (isHovering) {
-          setState(() => isHover = true);
-        } else {
-          setState(() => isHover = false);
+      onHover: (hovering) {
+        if (hovering != isHover) {
+          setState(() => isHover = hovering);
         }
       },
-      child: Container(
-        width: Responsive.isTablet(context) ? 400 : 300,
-        // height: AppDimensions.normalize(100),
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        width: isTablet ? 400 : 300,
+        height: (isTablet || isMobile) ? 200 : 300,
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         decoration: BoxDecoration(
-          // gradient: isHover ? pinkpurple : grayBack,
           gradient: isHover ? pinkpurple : theme.serviceCard,
           borderRadius: BorderRadius.circular(15),
-          boxShadow: isHover ? [primaryColorShadow] : [blackColorShadow],
+          boxShadow: [isHover ? primaryColorShadow : blackColorShadow],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              widget.service.icon,
-              height: 60,
-            ),
+            SvgPicture.asset(service.icon, height: 60),
             Space.y(3.w)!,
-            Text(widget.service.name,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: isHover ? whiteColor : theme.textColor,
-                )),
+            Text(
+              service.name,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: baseTextColor),
+            ),
             Space.y(1.w)!,
             Text(
-              widget.service.description,
+              service.description,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: isHover
-                    ? whiteColor.withValues(alpha: 0.8)
-                    : theme.textColor,
+                color: descTextColor,
                 fontWeight: FontWeight.w200,
                 fontSize: 13,
               ),
             ),
             Space.y(2.w)!,
-            if (Responsive.isDesktop(context))
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: widget.service.tool
-                      .map((e) => Row(
-                            children: [
-                              const Text('🛠   '),
-                              Text(e,
-                                  style: TextStyle(
-                                    color:
-                                        isHover ? whiteColor : theme.textColor,
-                                  )),
-                            ],
-                          ))
-                      .toList()),
-            if (Responsive.isMobile(context) || Responsive.isTablet(context))
-              Expanded(
-                child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    children: widget.service.tool
-                        .map((e) => Row(
-                              children: [
-                                const Text('🛠   '),
-                                Text(e,
-                                    style: TextStyle(
-                                      color: isHover
-                                          ? whiteColor
-                                          : theme.textColor,
-                                    )),
-                              ],
-                            ))
-                        .toList()),
-              )
+            if (isDesktop)
+              _buildToolList(service.tool, baseTextColor)
+            else if (isTablet || isMobile)
+              Flexible(
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: service.tool.length,
+                  itemBuilder: (context, index) => _buildToolRow(
+                    service.tool[index],
+                    baseTextColor,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildToolList(List<String> tools, Color textColor) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: tools.map((e) => _buildToolRow(e, textColor)).toList(),
+    );
+  }
+
+  Widget _buildToolRow(String tool, Color textColor) {
+    return Row(
+      children: [
+        const Text('🛠   '),
+        Text(tool, style: TextStyle(color: textColor)),
+      ],
     );
   }
 }
