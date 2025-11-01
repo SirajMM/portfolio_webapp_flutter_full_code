@@ -10,24 +10,43 @@ class Footer extends StatelessWidget {
     double height = MediaQuery.sizeOf(context).height;
     double width = MediaQuery.sizeOf(context).width;
     return Container(
-      margin: EdgeInsets.fromLTRB(0, height * 0.05, 0, 0),
-      height: height * 0.07,
+      margin: EdgeInsets.fromLTRB(0, height * 0.05, 0, 10),
       width: width,
-      child: Center(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text("Developed by "),
-            InkWell(
-              onTap: () => openURL(gitHub),
-              child: const Text(
-                "Muhammad Siraj 💙",
-                style: TextStyle(fontWeight: FontWeight.bold),
+      child: Column(
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text("Developed by "),
+              InkWell(
+                onTap: () => openURL(gitHub),
+                child: const Text(
+                  "Muhammad Siraj 💙",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
+              const Text(" © 2022"),
+            ],
+          ),
+          SizedBox(height: height / 80),
+          Opacity(
+            opacity: 0.5,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text("Made with "),
+                InkWell(
+                  onTap: () => openURL(flutter),
+                  child: const Text(
+                    "Flutter",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
             ),
-            const Text(" © 2022"),
-          ],
-        ),
+          ),
+          Opacity(opacity: 0.5, child: FlutterLogo()),
+        ],
       ),
     );
   }

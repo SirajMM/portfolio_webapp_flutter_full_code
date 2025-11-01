@@ -2,6 +2,7 @@ const String resume =
     'https://drive.google.com/file/d/1kz3nebVyaTQsC8rLo00-yLOyKThf9wD7/view?usp=drivesdk';
 
 const String gitHub = 'https://github.com/SirajMM';
+const String flutter = 'https://flutter.dev/';
 
 const String facebook = 'https://www.facebook.com/muhammed.siraj.509994';
 const String twitter = 'https://twitter.com/s_i__r__a_j?t=wBMgC3lxqKFuJ16HQBD_Wg&s=09';
