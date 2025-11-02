@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:mysite/app/sections/home/widgets/animation_text.dart';
+import 'package:mysite/app/sections/home/widgets/image%20_section.dart';
 import 'package:mysite/app/widgets/color_chage_btn.dart';
 import 'package:mysite/changes/img.dart';
 import 'package:mysite/changes/strings.dart';
@@ -20,19 +21,19 @@ class HomeTab extends StatelessWidget {
     return SizedBox(
       height: 60.h,
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
-            right: 10.w,
-            bottom: 20.w,
+            right: 10,
             child: const EntranceFader(
               offset: Offset(0, 0),
               delay: Duration(seconds: 1),
               duration: Duration(milliseconds: 800),
-              child: ZoomAnimations(),
+              child: StylishBackground(),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 10.w, top: 10.h),
+            padding: EdgeInsets.only(left: 10.w, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

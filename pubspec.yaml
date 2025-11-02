@@ -1,5 +1,5 @@
 name: mysite
-description: A new Flutter project.
+description: Siraj's Profile WebSite.
 
 publish_to: "none"
 
@@ -24,7 +24,7 @@ dependencies:
   animated_text_kit: ^4.2.1
   scrollable_positioned_list: ^0.3.5
   syncfusion_flutter_pdfviewer: ^31.2.4
-#  universal_html: ^2.2.4
+  mouse_follower: ^1.4.3
 
 dev_dependencies:
   flutter_test:

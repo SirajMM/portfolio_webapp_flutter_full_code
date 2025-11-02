@@ -1,9 +1,7 @@
 import 'package:mysite/app/sections/home/widgets/animation_text.dart';
-import 'package:mysite/app/sections/home/widgets/pdf_view.dart';
-import 'package:mysite/core/animations/zoom_animation.dart';
+import 'package:mysite/app/sections/home/widgets/image%20_section.dart';
 import 'package:mysite/core/res/responsive_size.dart';
 import 'package:sizer/sizer.dart';
-// import 'package:universal_html/html.dart' as html;
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as web;
@@ -22,20 +20,19 @@ class HomeDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    Size size = MediaQuery.sizeOf(context);
 
     return SizedBox(
-      height: 80.h,
+      height: 70.h,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: size.width / 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              margin: EdgeInsets.only(top: 10.h),
-              width: 55.w,
+            Expanded(
+              flex: 2,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -54,7 +51,6 @@ class HomeDesktop extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Space.y(0.5.w)!,
                   Text(yourname,
                       style: const TextStyle(
                         fontSize: 50,
@@ -65,17 +61,18 @@ class HomeDesktop extends StatelessWidget {
                     repeatForever: true,
                     animatedTexts: desktopList,
                   ),
-                  Space.y(1.5.w)!,
-                  Padding(
-                    padding: EdgeInsets.only(right: 10.w),
-                    child: Text(miniDescription,
-                        style: TextStyle(
-                          fontSize: isFontSize(context, 20),
-                          fontWeight: FontWeight.w400,
-                          color: theme.textColor.withValues(alpha: 0.6),
-                        )),
+                  SizedBox(height: size.height / 100),
+                  Text(
+                    miniDescription,
+                    style: TextStyle(
+                      fontSize: isFontSize(context, 20),
+                      fontWeight: FontWeight.w400,
+                      overflow: TextOverflow.fade,
+                      color: theme.textColor.withValues(alpha: 0.6),
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  Space.y(3.w)!,
+                  SizedBox(height: size.height / 30),
                   ColorChangeButton(
                     text: 'View Resume',
                     onTap: () {
@@ -85,7 +82,7 @@ class HomeDesktop extends StatelessWidget {
                 ],
               ),
             ),
-            const ZoomAnimations(),
+            Expanded(child: StylishBackground()),
           ],
         ),
       ),
