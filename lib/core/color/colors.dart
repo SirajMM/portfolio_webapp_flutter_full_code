@@ -62,7 +62,7 @@ BoxShadow primaryColorShadow = BoxShadow(
   offset: const Offset(0.0, 0.0),
 );
 BoxShadow blackColorShadow = BoxShadow(
-  color: Colors.black.withAlpha(100),
-  blurRadius: 12.0,
+  color: Colors.black.withAlpha(1),
+  blurRadius: 10.0,
   offset: const Offset(0.0, 0.0),
 );
