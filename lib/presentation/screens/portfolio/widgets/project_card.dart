@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mysite/app/utils/project_utils.dart';
 import 'package:mysite/core/color/colors.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/res/responsive.dart';
 import 'package:mysite/core/util/constants.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../utils/project_utils.dart';
 
 class ProjectCard extends StatefulWidget {
   final ProjectUtils project;
@@ -83,9 +84,7 @@ class ProjectCardState extends State<ProjectCard> {
                 height: 36.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      image: AssetImage(widget.project.banners),
-                      fit: BoxFit.cover),
+                  image: DecorationImage(image: AssetImage(widget.project.banners), fit: BoxFit.cover),
                 ),
               ),
             ),

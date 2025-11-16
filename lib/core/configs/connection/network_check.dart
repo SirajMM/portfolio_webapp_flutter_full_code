@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:mysite/app/sections/main/main_section.dart';
+import '../../../presentation/screens/main/main_section.dart';
 import 'bloc/connected_bloc.dart';
 
 class NChecking extends StatefulWidget {

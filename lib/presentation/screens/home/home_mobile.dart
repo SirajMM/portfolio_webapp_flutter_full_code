@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:mysite/app/widgets/color_chage_btn.dart';
 import 'package:mysite/changes/img.dart';
 import 'package:mysite/changes/strings.dart';
 import 'package:mysite/core/configs/configs.dart';
@@ -10,6 +9,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../core/animations/entrance_fader.dart';
 import '../../../core/animations/zoom_animation.dart';
+import '../../widgets/color_chage_btn.dart';
 import 'widgets/animation_text.dart';
 
 class HomeMobile extends StatelessWidget {

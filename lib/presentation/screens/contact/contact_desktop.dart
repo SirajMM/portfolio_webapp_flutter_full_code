@@ -1,14 +1,13 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:mysite/app/utils/contact_utils.dart';
-import 'package:mysite/app/widgets/custom_text_heading.dart';
 import 'package:mysite/changes/links.dart';
 import 'package:mysite/changes/strings.dart';
 import 'package:mysite/core/color/colors.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/util/constants.dart';
 import 'package:sizer/sizer.dart';
+import '../../utils/contact_utils.dart';
+import '../../widgets/custom_text_heading.dart';
 
 class ContactDesktop extends StatelessWidget {
   const ContactDesktop({super.key});
