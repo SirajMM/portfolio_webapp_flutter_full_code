@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mysite/changes/links.dart';
 import 'package:mysite/changes/strings.dart';
@@ -14,7 +15,6 @@ class ContactMobileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
     return Column(
       children: [
         Space.y(10.w)!,
@@ -32,31 +32,43 @@ class ContactMobileTab extends StatelessWidget {
             decoration: BoxDecoration(gradient: buttonGradi, borderRadius: BorderRadius.circular(10)),
             child: const Text(
               'Get Started',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: blackColor,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: blackColor),
             ),
           ),
         ),
         Space.y(10.w)!,
         Wrap(
-            alignment: WrapAlignment.center,
-            runSpacing: 50,
-            children: contactUtils
-                .asMap()
-                .entries
-                .map((e) => IconButton(
-                      icon: Image.network(
-                        e.value.icon,
-                        color: theme.textColor,
+          alignment: WrapAlignment.center,
+          runSpacing: 10,
+          children: contactUtils
+              .asMap()
+              .entries
+              .map(
+                (e) => Tooltip(
+                  message: e.value.hoverMessage,
+                  child: IconButton(
+                    color: Colors.teal,
+                    splashColor: Colors.teal.withValues(alpha: 0.3),
+                    icon: Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Colors.teal.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
                       ),
-                      onPressed: () => openURL(e.value.url),
-                      highlightColor: Colors.white54,
-                      iconSize: 21,
-                    ))
-                .toList()),
+                      child: CachedNetworkImage(
+                        imageUrl: e.value.icon,
+                        width: 40,
+                        fit: BoxFit.fitWidth,
+                        filterQuality: FilterQuality.high,
+                      ),
+                    ),
+                    onPressed: () => openURL(e.value.url),
+                    iconSize: 21,
+                  ),
+                ),
+              )
+              .toList(),
+        ),
         Space.y(5.w)!,
         Container(color: Colors.white.withValues(alpha: 0.2), height: 1),
       ],

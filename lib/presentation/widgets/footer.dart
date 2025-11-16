@@ -13,6 +13,7 @@ class Footer extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(0, height * 0.05, 0, 10),
       width: width,
       child: Column(
+        mainAxisSize: .min,
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -20,10 +21,7 @@ class Footer extends StatelessWidget {
               const Text("Developed by "),
               InkWell(
                 onTap: () => openURL(gitHub),
-                child: const Text(
-                  "Muhammad Siraj 💙",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                child: const Text("Muhammad Siraj 💙", style: TextStyle(fontWeight: FontWeight.bold)),
               ),
               const Text(" © 2022"),
             ],
@@ -37,10 +35,7 @@ class Footer extends StatelessWidget {
                 const Text("Made with "),
                 InkWell(
                   onTap: () => openURL(flutter),
-                  child: const Text(
-                    "Flutter",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
+                  child: const Text("Flutter", style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
