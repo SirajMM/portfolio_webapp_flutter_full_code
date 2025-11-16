@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../app_dimensions.dart';
 // import 'package:mysite/core/configs/configs.dart';
 
 class AppText {
@@ -19,7 +21,7 @@ class AppText {
   // static TextStyle? b2b;
 
   // Label
-  // static TextStyle? l1;
+  static TextStyle? l1;
   // static TextStyle? l1b;
   // static TextStyle? l2;
   // static TextStyle? l2b;
@@ -43,7 +45,7 @@ class AppText {
     // b2 = baseStyle.copyWith(fontSize: AppDimensions.font(8));
     // b2b = b2!.copyWith(fontWeight: b);
 
-    // l1 = baseStyle.copyWith(fontSize: AppDimensions.font(6));
+    l1 = baseStyle.copyWith(fontSize: AppDimensions.font(6));
     // l1b = l1!.copyWith(fontWeight: b);
 
     // l2 = baseStyle.copyWith(fontSize: AppDimensions.font(4));

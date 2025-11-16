@@ -14,14 +14,13 @@ class MobileDrawer extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 2.h),
               child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Center(child: NavBarLogo()),
                   const Divider(),
                   ListTile(
                     leading: Icon(
                       state.isDarkThemeOn ? Icons.dark_mode_outlined : Icons.light_mode,
-                      // color: theme.textColor,
+                      color: theme.textColor,
                     ),
                     title: Text(state.isDarkThemeOn ? "Light Mode" : "Dark Mode"),
                     trailing: Switch(
@@ -35,33 +34,20 @@ class MobileDrawer extends StatelessWidget {
                   ),
                   const Divider(),
                   ...NavBarUtils.names.asMap().entries.map(
-                        (e) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MaterialButton(
-                            hoverColor: theme.primaryColor.withAlpha(70),
-                            onPressed: () {
-                              jumpTo(e.key);
-                              Navigator.pop(context);
-                            },
-                            child: ListTile(
-                              leading: Icon(
-                                NavBarUtils.icons[e.key],
-                                // color: theme.primaryColor,
-                              ),
-                              title: Text(
-                                e.value,
-                                // style: AppText.l1,
-                              ),
-                            ),
-                          ),
+                    (e) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MaterialButton(
+                        hoverColor: theme.primaryColor.withAlpha(70),
+                        onPressed: () {
+                          jumpTo(e.key);
+                          Navigator.pop(context);
+                        },
+                        child: ListTile(
+                          leading: Icon(NavBarUtils.icons[e.key], color: theme.primaryColor),
+                          title: Text(e.value, style: AppText.l1),
                         ),
                       ),
-                  Space.y(5.w)!,
-                  ColorChangeButton(
-                    text: 'RESUME',
-                    onTap: () {
-                      openURL(resume);
-                    },
+                    ),
                   ),
                 ],
               ),

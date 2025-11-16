@@ -4,11 +4,11 @@ class Body extends StatelessWidget {
   const Body({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(_) {
     return ScrollablePositionedList.builder(
-      padding: EdgeInsets.zero,
+      padding: .only(top: 120),
       itemCount: BodyUtils.views.length,
-      itemBuilder: (context, index) => BodyUtils.views[index],
+      itemBuilder: (_, index) => BodyUtils.views[index],
       itemScrollController: itemScrollController,
     );
   }

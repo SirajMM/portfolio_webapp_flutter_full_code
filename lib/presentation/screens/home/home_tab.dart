@@ -5,10 +5,13 @@ import 'package:mysite/changes/strings.dart';
 import 'package:mysite/core/animations/entrance_fader.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/res/responsive_size.dart';
+import 'package:mysite/presentation/utils/constants.dart';
 import 'package:sizer/sizer.dart';
+import '../../../changes/links.dart';
 import '../../widgets/color_chage_btn.dart';
 import 'widgets/animation_text.dart';
 import 'widgets/image _section.dart';
+import 'package:web/web.dart' as web;
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
@@ -38,51 +41,43 @@ class HomeTab extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      hellotag,
-                      style: AppText.h3!.copyWith(fontSize: isFontSize(context, 18)),
-                    ),
+                    Text(hellotag, style: AppText.h3!.copyWith(fontSize: isFontSize(context, 18))),
                     EntranceFader(
                       offset: const Offset(0, 0),
                       delay: const Duration(seconds: 2),
                       duration: const Duration(milliseconds: 800),
-                      child: Image.asset(StaticImage.hi, height: 10.sp),
+                      child: Image.asset(StaticImage.hi, height: 3.h),
                     ),
                   ],
                 ),
-                Space.y(1.w)!,
+                kHeight1,
                 Text(
                   yourname,
-                  style: TextStyle(
-                    fontSize: isFontSize(context, 38),
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: isFontSize(context, 38), fontWeight: FontWeight.w600),
                 ),
                 EntranceFader(
                   offset: const Offset(-10, 0),
                   delay: const Duration(seconds: 1),
                   duration: const Duration(milliseconds: 800),
-                  child: AnimatedTextKit(
-                    animatedTexts: tabList,
-                    isRepeatingAnimation: true,
-                  ),
+                  child: AnimatedTextKit(animatedTexts: tabList, isRepeatingAnimation: true),
                 ),
-                Space.y(1.5.w)!,
+                kHeight1,
                 Padding(
                   padding: EdgeInsets.only(right: 50.w),
                   child: Text(
                     miniDescription,
                     style: TextStyle(
-                        fontSize: isFontSize(context, 16),
-                        fontWeight: FontWeight.w100,
-                        color: theme.textColor.withValues(alpha: 0.6)),
+                      fontSize: isFontSize(context, 16),
+                      fontWeight: FontWeight.w100,
+                      color: theme.textColor.withValues(alpha: 0.6),
+                    ),
                   ),
                 ),
-                Space.y(2.w)!,
+                kHeight2,
                 ColorChangeButton(
-                  text: 'download cv',
+                  text: 'View Resume',
                   onTap: () {
-                    // html.window.open(resume, "pdf");
+                    web.window.open(resume, '_blank');
                   },
                 ),
               ],
