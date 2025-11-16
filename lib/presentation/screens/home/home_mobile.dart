@@ -4,6 +4,7 @@ import 'package:mysite/changes/img.dart';
 import 'package:mysite/changes/strings.dart';
 import 'package:mysite/core/configs/configs.dart';
 import 'package:mysite/core/res/responsive_size.dart';
+import 'package:mysite/presentation/utils/constants.dart';
 import 'package:sizer/sizer.dart';
 import 'package:web/web.dart' as web;
 import '../../../changes/links.dart';
@@ -31,10 +32,12 @@ class HomeMobile extends StatelessWidget {
           Text(
             yourname,
             style: TextStyle(fontSize: isFontSize(context, 28), fontWeight: FontWeight.w600),
+            textAlign: TextAlign.center,
           ),
           AnimatedTextKit(animatedTexts: mobileList, repeatForever: true, isRepeatingAnimation: true),
 
-          StylishBackground(),
+          StylishBackground(isMobile: true),
+          kHeight2,
           ColorChangeButton(
             text: 'View Resume',
             onTap: () {

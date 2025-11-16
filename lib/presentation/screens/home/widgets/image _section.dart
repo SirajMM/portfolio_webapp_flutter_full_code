@@ -3,8 +3,8 @@ import '../../../../core/color/colors.dart';
 import 'gradiant_widget.dart';
 
 class StylishBackground extends StatelessWidget {
-  const StylishBackground({super.key});
-
+  const StylishBackground({super.key, this.isMobile = false});
+  final bool isMobile;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -22,28 +22,19 @@ class StylishBackground extends StatelessWidget {
                 child: Transform.rotate(
                   angle: 3.14,
                   child: GradiantWidget(
-                    child: Icon(
-                      Icons.chevron_right,
-                      color: secondaryColor,
-                      size: 80,
-                    ),
+                    child: Icon(Icons.chevron_right, color: secondaryColor, size: 80),
                   ),
                 ),
               ),
-              const GlowingRing(),
+              GlowingRing(isMobile: isMobile),
               Align(
                 alignment: Alignment.bottomRight,
                 child: GradiantWidget(
-                  child: Icon(
-                    Icons.chevron_right_outlined,
-                    color: secondaryColor,
-                    size: 80,
-                  ),
+                  child: Icon(Icons.chevron_right_outlined, color: secondaryColor, size: 80),
                 ),
               ),
             ],
           ),
-          // Image.asset(''),
         ],
       ),
     );
@@ -51,8 +42,8 @@ class StylishBackground extends StatelessWidget {
 }
 
 class GlowingRing extends StatefulWidget {
-  const GlowingRing({super.key});
-
+  const GlowingRing({super.key, this.isMobile = false});
+  final bool isMobile;
   @override
   State<GlowingRing> createState() => _GlowingRingState();
 }
@@ -63,10 +54,8 @@ class _GlowingRingState extends State<GlowingRing> with SingleTickerProviderStat
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..repeat(reverse: true);
+    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 2))
+      ..repeat(reverse: true);
   }
 
   @override
@@ -79,8 +68,8 @@ class _GlowingRingState extends State<GlowingRing> with SingleTickerProviderStat
         final glow = 20 + (_controller.value * 30);
 
         return Container(
-          width: size.width / 6,
-          height: size.height / 3,
+          width: widget.isMobile ? size.width / 3 : size.width / 6,
+          height: widget.isMobile ? size.height / 1.5 : size.height / 3,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: pinkpurple,
@@ -95,10 +84,13 @@ class _GlowingRingState extends State<GlowingRing> with SingleTickerProviderStat
           child: Container(
             margin: const EdgeInsets.all(10), // thickness of the ring
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.black.withValues(alpha: .6),
-                image: DecorationImage(
-                    image: AssetImage('assets/imgs/IMG_20230620_213445_759.jpg'), fit: BoxFit.cover)),
+              shape: BoxShape.circle,
+              color: Colors.black.withValues(alpha: .6),
+              image: DecorationImage(
+                image: AssetImage('assets/imgs/IMG_20230620_213445_759.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         );
       },
