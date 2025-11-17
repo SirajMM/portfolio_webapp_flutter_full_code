@@ -30,7 +30,10 @@ migrate_working_dir/
 .packages
 .pub-cache/
 .pub/
-/build/
+/build/4536474165af9157d0ff3c7c9c7a1ec5
+/build/flutter_assets
+/build/native_assets
+
 
 # Web related
 
