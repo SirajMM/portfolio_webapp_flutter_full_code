@@ -8,6 +8,8 @@ class NavbarDesktop extends StatefulWidget {
 }
 
 class NavbarDesktopState extends State<NavbarDesktop> {
+  final GlobalKey _iconKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -29,14 +31,44 @@ class NavbarDesktopState extends State<NavbarDesktop> {
                     (e) => NavBarActionButton(label: e.value, index: e.key),
                   ),
                   InkWell(
-                    onTap: () {
-                      context.read<ThemeCubit>().updateTheme(!state.isDarkThemeOn);
+                    key: _iconKey,
+                    onTap: () async {
+                      final renderBox = _iconKey.currentContext?.findRenderObject() as RenderBox?;
+                      if (renderBox == null) return;
+                      final position = renderBox.localToGlobal(Offset.zero);
+                      final buttonCenter =
+                          position + Offset(renderBox.size.width / 2, renderBox.size.height / 2);
+
+                      final overlay = CircularThemeRevealOverlay.of(context);
+                      if (overlay != null) {
+                        await overlay.startTransition(
+                          center: buttonCenter,
+                          reverse: !state.isDarkThemeOn,
+                          onThemeChange: () {
+                            context.read<ThemeCubit>().updateTheme(!state.isDarkThemeOn);
+                          },
+                        );
+                      }
                     },
-                    child: Image.network(
-                      state.isDarkThemeOn ? IconUrls.darkIcon : IconUrls.lightIcon,
-                      height: 30,
-                      width: 30,
-                      color: state.isDarkThemeOn ? Colors.black : Colors.white,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 600),
+                      transitionBuilder: (child, animation) {
+                        final isLight = (child.key as ValueKey).value == false;
+                        final rotationTween = isLight
+                            ? Tween<double>(begin: 0, end: 1)
+                            : Tween<double>(begin: 1, end: 0);
+                        return RotationTransition(
+                          turns: rotationTween.animate(animation),
+                          child: FadeTransition(opacity: animation, child: child),
+                        );
+                      },
+                      child: Image.network(
+                        key: ValueKey(state.isDarkThemeOn),
+                        state.isDarkThemeOn ? IconUrls.darkIcon : IconUrls.lightIcon,
+                        height: 30,
+                        width: 30,
+                        color: state.isDarkThemeOn ? Colors.black : Colors.white,
+                      ),
                     ),
                   ),
                 ],

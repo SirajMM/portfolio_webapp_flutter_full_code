@@ -1,8 +1,14 @@
 part of '../main_section.dart';
 
-class MobileDrawer extends StatelessWidget {
+class MobileDrawer extends StatefulWidget {
   const MobileDrawer({super.key});
 
+  @override
+  State<MobileDrawer> createState() => _MobileDrawerState();
+}
+
+class _MobileDrawerState extends State<MobileDrawer> {
+  final GlobalKey _iconKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
@@ -18,18 +24,46 @@ class MobileDrawer extends StatelessWidget {
                   const Center(child: NavBarLogo()),
                   const Divider(),
                   ListTile(
-                    leading: Icon(
-                      state.isDarkThemeOn ? Icons.dark_mode_outlined : Icons.light_mode,
-                      color: theme.textColor,
-                    ),
                     title: Text(state.isDarkThemeOn ? "Light Mode" : "Dark Mode"),
-                    trailing: Switch(
-                      value: state.isDarkThemeOn,
-                      activeThumbColor: theme.primaryColor,
-                      inactiveTrackColor: Colors.grey,
-                      onChanged: (newValue) {
-                        context.read<ThemeCubit>().updateTheme(newValue);
+                    trailing: GestureDetector(
+                      key: _iconKey,
+
+                      onTap: () async {
+                        final renderBox = _iconKey.currentContext?.findRenderObject() as RenderBox?;
+                        if (renderBox == null) return;
+                        final position = renderBox.localToGlobal(Offset.zero);
+                        final buttonCenter =
+                            position + Offset(renderBox.size.width / 2, renderBox.size.height / 2);
+
+                        final overlay = CircularThemeRevealOverlay.of(context);
+                        if (overlay != null) {
+                          await overlay.startTransition(
+                            center: buttonCenter,
+                            reverse: !state.isDarkThemeOn,
+                            onThemeChange: () {
+                              context.read<ThemeCubit>().updateTheme(!state.isDarkThemeOn);
+                            },
+                          );
+                        }
                       },
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 600),
+                        transitionBuilder: (child, animation) {
+                          final isLight = (child.key as ValueKey).value == false;
+                          final rotationTween = isLight
+                              ? Tween<double>(begin: 0, end: 1)
+                              : Tween<double>(begin: 1, end: 0);
+                          return RotationTransition(
+                            turns: rotationTween.animate(animation),
+                            child: FadeTransition(opacity: animation, child: child),
+                          );
+                        },
+                        child: Icon(
+                          key: ValueKey(state.isDarkThemeOn),
+                          state.isDarkThemeOn ? Icons.dark_mode_outlined : Icons.light_mode,
+                          color: theme.textColor,
+                        ),
+                      ),
                     ),
                   ),
                   const Divider(),

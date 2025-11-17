@@ -26,6 +26,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^31.2.4
   mouse_follower: ^1.4.3
   cached_network_image: ^3.4.1
+  circular_theme_reveal: ^1.0.2
 
 dev_dependencies:
   flutter_test:

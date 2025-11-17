@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:circular_theme_reveal/circular_theme_reveal.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mouse_follower/mouse_follower.dart';
 import 'package:mysite/core/configs/configs.dart';
@@ -27,14 +29,19 @@ class MySite extends StatelessWidget {
         buildWhen: (previous, current) => current.isDarkThemeOn != previous.isDarkThemeOn,
         builder: (context, state) {
           return Sizer(
-            builder: (context, orientation, deviceType) {
+            builder: (context, _, _) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Siraj',
                 theme: AppTheme.themeData(state.isDarkThemeOn, context),
+                themeAnimationDuration: Duration.zero,
+                builder: (context, child) =>
+                    CircularThemeRevealOverlay(child: child ?? SizedBox.shrink()),
                 initialRoute: "/",
                 routes: {
-                  "/": (context) => Platform.isAndroid || Platform.isIOS
+                  "/": (context) =>
+                      defaultTargetPlatform == TargetPlatform.iOS ||
+                          defaultTargetPlatform == TargetPlatform.android
                       ? const NChecking()
                       : MouseFollower(
                           mouseStylesStack: [
